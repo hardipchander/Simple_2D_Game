@@ -86,11 +86,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WWR_LIB;WWR_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WWR_LIB;WWR_WINDOWS;WWR_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>precompilehead.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)WindWheelReal;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -103,11 +104,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WWR_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WWR_LIB;WWR_WINDOWS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>precompilehead.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)WindWheelReal;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,11 +122,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WWR_LIB;WWR_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WWR_LIB;WWR_WINDOWS;WWR_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>precompilehead.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)WindWheelReal;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,11 +140,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WWR_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WWR_LIB;WWR_WINDOWS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>precompilehead.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)WindWheelReal;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,9 +155,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractWindow.h" />
+    <ClInclude Include="ActualGlfwWin.h" />
     <ClInclude Include="precompilehead.h" />
     <ClInclude Include="WindWheelReal.h" />
     <ClInclude Include="WindWheelRealApp.h" />
+    <ClInclude Include="WinForGame.h" />
     <ClInclude Include="WwrMacroDefinitions.h" />
   </ItemGroup>
   <ItemGroup>
@@ -163,7 +170,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="usingGLFW\ActualGlfwWin.cpp" />
     <ClCompile Include="WindWheelRealApp.cpp" />
+    <ClCompile Include="WinForGame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\glfw\Build\src\glfw.vcxproj">
+      <Project>{ad2dbcd5-0df9-3826-801e-a8f0ef02aeb8}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

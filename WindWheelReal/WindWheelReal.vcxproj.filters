@@ -27,12 +27,27 @@
     <ClInclude Include="precompilehead.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WinForGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ActualGlfwWin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindWheelRealApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="precompilehead.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinForGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="usingGLFW\ActualGlfwWin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
