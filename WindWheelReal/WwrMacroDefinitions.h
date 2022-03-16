@@ -1,10 +1,14 @@
 #pragma once
 #include "precompilehead.h"
 
-#ifdef WWR_LIB
-	#define WWR_API __declspec(dllexport)
+#ifdef WWR_WINDOWS
+	#ifdef WWR_LIB
+		#define WWR_API __declspec(dllexport)
+	#else 
+		#define WWR_API __declspec(dllimport)
+	#endif
 #else 
-	#define WWR_API __declspec(dllimport)
+	#define WWR_API
 #endif
 
 

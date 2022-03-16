@@ -13,7 +13,6 @@ set(SOURCE_FILES
 		usingGLFW/ActualGlfwWin.cpp
         )
 
-
 add_library(WindWheelReal SHARED ${HEADER_FILES} ${SOURCE_FILES})
 
 add_definitions(-DWWR_LIB)
