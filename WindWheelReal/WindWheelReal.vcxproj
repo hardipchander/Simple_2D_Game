@@ -158,6 +158,7 @@
     <ClInclude Include="AbstractWindow.h" />
     <ClInclude Include="ActualGlfwWin.h" />
     <ClInclude Include="precompilehead.h" />
+    <ClInclude Include="usingGLFW\ActualGlfwWin.h" />
     <ClInclude Include="WindWheelReal.h" />
     <ClInclude Include="WindWheelRealApp.h" />
     <ClInclude Include="WinForGame.h" />

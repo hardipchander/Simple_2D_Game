@@ -1,10 +1,10 @@
 #pragma once
 #include "AbstractWindow.h"
-//GLFW-> library that creates a game window or a graphic window  
+//GLFW-> library that creates a game window or a graphic window I fixed the error
 #include "GLFW/glfw3.h"
 
 namespace WWR {
-	class ActualGlfwWin : public AbstractWindow {  
+	class ActualGlfwWin : public AbstractWindow {
 	public:
 		ActualGlfwWin();
 		virtual bool CreateWindow(int width, int height, const std::string& nameForWindow) override;
@@ -18,7 +18,7 @@ namespace WWR {
 		~ActualGlfwWin();
 
 	private:
-		GLFWwindow* ActualWindow{nullptr};
+		GLFWwindow* ActualWindow{ nullptr };
 	};
 }
 
