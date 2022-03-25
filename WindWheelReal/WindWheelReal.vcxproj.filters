@@ -33,9 +33,6 @@
     <ClInclude Include="AbstractWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ActualGlfwWin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="usingGLFW\ActualGlfwWin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
