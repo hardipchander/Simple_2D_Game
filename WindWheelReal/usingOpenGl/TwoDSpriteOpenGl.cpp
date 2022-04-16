@@ -7,13 +7,24 @@ namespace WWR {
 
 	TwoDSpriteOpenGl::TwoDSpriteOpenGl(const std::string& pathForFile) {
 
+		// Invert Image of Texture to not make it look upside down
+		stbi_set_flip_vertically_on_load(true);
+
+		// Data for Texture 
+		int numChannels;
+		unsigned char* data = stbi_load(pathForFile.c_str(), &width, &height, &numChannels, 0);
+
+		// Error Checking for Texture where the data for image of Tetxure does not load 
+		if (data == NULL) {
+			WWR_LOG("Error the data for texture does not load");
+		}
+
 		// Array for Vertices 
 		float points[] = {
-			-0.5f, -0.5f, 0.0f, 0.0f,    // bottom left
-			-0.5f, 0.5f,  0.0f, 1.0f,    // top left
-			 0.5f, 0.5f,  1.0f, 1.0f,	 // top right
-			 0.5f, -0.5f, 1.0f, 0.0f,	 // bottom right 
-
+			0.0f,  0.0f,                  0.0f, 0.0f,    // bottom left
+			0.0f, float(height),          0.0f, 1.0f,    // top left
+			float(width), float(height),  1.0f, 1.0f,	 // top right
+			float(width), 0.0f,           1.0f, 0.0f,	 // bottom right 
 		};
 
 		// Specify Edges
@@ -59,18 +70,6 @@ namespace WWR {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		// Invert Image of Texture to not make it look upside down
-		stbi_set_flip_vertically_on_load(true);
-
-		// Data for Texture 
-		int numChannels;
-		unsigned char* data = stbi_load(pathForFile.c_str(), &width, &height, &numChannels, 0);
-
-		// Error Checking for Texture where the data for image of Tetxure does not load 
-		if (data == NULL) {
-			WWR_LOG("Error the data for texture does not load");
-		}
 
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
