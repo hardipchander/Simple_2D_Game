@@ -2,6 +2,7 @@
 #include "AbstractWindow.h"
 #include "WwrMacroDefinitions.h"
 
+
 // Game Window for my game and it is a singleton (1 game = 1 game window) in the namespace WWR
 namespace WWR {
 	class WWR_API WinForGame {

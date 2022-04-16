@@ -1,7 +1,7 @@
 #pragma once
 #include "AbstractWindow.h"
-//GLFW-> library that creates a game window or a graphic window I fixed the error
-#include "GLFW/glfw3.h"
+#include "glad/glad.h"
+#include "GLFW/glfw3.h" //GLFW-> library that creates a game window or a graphic window I fixed the error
 
 namespace WWR {
 	class ActualGlfwWin : public AbstractWindow {
@@ -18,7 +18,7 @@ namespace WWR {
 		~ActualGlfwWin();
 
 	private:
-		GLFWwindow* ActualWindow{ nullptr };
+		GLFWwindow* ActualWindow{nullptr};
 	};
 }
 

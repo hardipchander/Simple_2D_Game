@@ -24,3 +24,5 @@ include_directories(../WindWheelReal)
 target_precompile_headers(WindWheelReal PRIVATE precompilehead.h)
 
 target_link_libraries(WindWheelReal glfw)
+target_link_libraries(WindWheelReal usingGlad)
+target_link_libraries(WindWheelReal Stbi)

@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{51798576-877f-491b-b1b0-fb81af1ba821}</ProjectGuid>
-    <RootNamespace>WindWheelReal</RootNamespace>
+    <ProjectGuid>{a68bcea9-0a8f-48c4-8b62-3ed86bf08aca}</ProjectGuid>
+    <RootNamespace>glad</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -78,22 +78,17 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WWR_LIB;WWR_OPENGL;WWR_WINDOWS;WWR_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>precompilehead.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)WindWheelReal;$(SolutionDir)stbi;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glad/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,12 +101,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WWR_LIB;WWR_OPENGL;WWR_WINDOWS;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>precompilehead.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)WindWheelReal;$(SolutionDir)stbi;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glad/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,12 +116,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WWR_LIB;WWR_OPENGL;WWR_WINDOWS;WWR_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>precompilehead.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)WindWheelReal;$(SolutionDir)stbi;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glad/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,12 +131,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WWR_LIB;WWR_OPENGL;WWR_WINDOWS;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>precompilehead.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)WindWheelReal;$(SolutionDir)stbi;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glad/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,45 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractShader.h" />
-    <ClInclude Include="AbstractSprite.h" />
-    <ClInclude Include="AbstractWindow.h" />
-    <ClInclude Include="precompilehead.h" />
-    <ClInclude Include="ShaderProgram.h" />
-    <ClInclude Include="TwoDSprite.h" />
-    <ClInclude Include="usingGLFW\ActualGlfwWin.h" />
-    <ClInclude Include="usingOpenGl\OpenGlShaderProgram.h" />
-    <ClInclude Include="usingOpenGl\TwoDSpriteOpenGl.h" />
-    <ClInclude Include="WindWheelReal.h" />
-    <ClInclude Include="WindWheelRealApp.h" />
-    <ClInclude Include="WinForGame.h" />
-    <ClInclude Include="WwrMacroDefinitions.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="precompilehead.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="ShaderProgram.cpp" />
-    <ClCompile Include="TwoDSprite.cpp" />
-    <ClCompile Include="usingGLFW\ActualGlfwWin.cpp" />
-    <ClCompile Include="usingOpenGl\OpenGlShaderProgram.cpp" />
-    <ClCompile Include="usingOpenGl\TwoDSpriteOpenGl.cpp" />
-    <ClCompile Include="WindWheelRealApp.cpp" />
-    <ClCompile Include="WinForGame.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\glad\glad.vcxproj">
-      <Project>{a68bcea9-0a8f-48c4-8b62-3ed86bf08aca}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\glfw\Build\src\glfw.vcxproj">
-      <Project>{ad2dbcd5-0df9-3826-801e-a8f0ef02aeb8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\stbi\stbi.vcxproj">
-      <Project>{55dc4d6e-5db3-4ae0-994e-a4e3e6271da4}</Project>
-    </ProjectReference>
+    <ClCompile Include="src\glad.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

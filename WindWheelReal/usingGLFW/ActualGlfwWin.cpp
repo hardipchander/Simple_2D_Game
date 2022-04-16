@@ -22,6 +22,12 @@ namespace WWR {
 
 		// Before you can use OpenGL API you must have a current OpenGL Context
 		glfwMakeContextCurrent(ActualWindow);
+
+		// Error checking for Glad and it is after glfwMakeContextCurrent statement 
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+			WWR_LOG("Glad failed to intialize");
+		}
+
 		return true;
 	}
 
