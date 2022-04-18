@@ -1,7 +1,7 @@
 #pragma once
 
-#include "WwrMacroDefinitions.h"
 #include "AbstractShader.h"
+#include "WwrMacroDefinitions.h"
 
 namespace WWR {
 	class WWR_API ShaderProgram
