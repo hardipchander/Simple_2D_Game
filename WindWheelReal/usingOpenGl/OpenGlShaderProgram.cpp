@@ -17,7 +17,7 @@ namespace WWR {
 		while (vertexShadeInput) {
 			std::string singleLine;
 			std::getline(vertexShadeInput,singleLine);
-
+			singleLine.append("\n");
 			// store all lines of vertex shader into sourceCodeVertexShader variable 
 			sourceCodeShader = sourceCodeShader + singleLine;
 		}
@@ -53,6 +53,7 @@ namespace WWR {
 		while (FragmentShadeInput) {
 			std::string singleLine;
 			std::getline(FragmentShadeInput, singleLine);
+			singleLine.append("\n");
 
 			// store all lines of vertex shader into sourceCodeVertexShader variable 
 			sourceCodeShader = sourceCodeShader + singleLine;

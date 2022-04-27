@@ -6,6 +6,7 @@
 #include "glad/glad.h"    // for OpenGl and drawing 
 #include "TwoDSprite.h"
 #include "ShaderProgram.h"
+#include "SingleRenderer.h"
 
 namespace WWR {
 	void WindWheelRealApp::Run() {
@@ -17,12 +18,10 @@ namespace WWR {
 		const std::string WindowName = "Screen For Game";
 		WWR::WinForGame::GetWinForGame()->CreateWindow(900, 900, WindowName);
 
-		// Using the Shader 
-		WWR::ShaderProgram shader{ "../WindWheelReal/Assets/Shaders/defaultVertexShader.glsl", "../WindWheelReal/Assets/Shaders/defaultFragmentShader.glsl"};
-		shader.SetUniform2Ints("windowSize",900,900);
-		shader.SetUniform3Ints("spriteCoord",100,200, 1.0);
+		// Creating the Renderer Singleton
+		SingleRenderer::Init();
 
-		WWR::TwoDSprite sprite{"../WindWheelReal/Assets/SpritesOrImages/Flash.png"};
+		WWR::TwoDSprite sprite{"../WindWheelReal/Assets/SpritesOrImages/moon.png"};
 
 		while (true) {
 			// in this loop I will get user input and update the frame 
@@ -32,9 +31,7 @@ namespace WWR {
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			shader.Bind();
-			sprite.Bind();
-			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+			SingleRenderer::Draw(sprite, 50, 20, 1);
 			
 			// Swap Buffers and Poll events for Glfw Window
 			WWR::WinForGame::GetWinForGame()->UpdateBuffers();

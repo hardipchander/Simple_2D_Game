@@ -88,13 +88,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractRenderer.h" />
     <ClInclude Include="AbstractShader.h" />
     <ClInclude Include="AbstractSprite.h" />
     <ClInclude Include="AbstractWindow.h" />
     <ClInclude Include="precompilehead.h" />
     <ClInclude Include="ShaderProgram.h" />
+    <ClInclude Include="SingleRenderer.h" />
     <ClInclude Include="TwoDSprite.h" />
     <ClInclude Include="usingGLFW\ActualGlfwWin.h" />
+    <ClInclude Include="usingOpenGL\OpenGLRend.h" />
     <ClInclude Include="usingOpenGl\OpenGlShaderProgram.h" />
     <ClInclude Include="usingOpenGl\TwoDSpriteOpenGl.h" />
     <ClInclude Include="WindWheelReal.h" />
@@ -108,8 +111,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="SingleRenderer.cpp" />
     <ClCompile Include="TwoDSprite.cpp" />
     <ClCompile Include="usingGLFW\ActualGlfwWin.cpp" />
+    <ClCompile Include="usingOpenGL\OpenGLRend.cpp" />
     <ClCompile Include="usingOpenGl\OpenGlShaderProgram.cpp" />
     <ClCompile Include="usingOpenGl\TwoDSpriteOpenGl.cpp" />
     <ClCompile Include="WindWheelRealApp.cpp" />
