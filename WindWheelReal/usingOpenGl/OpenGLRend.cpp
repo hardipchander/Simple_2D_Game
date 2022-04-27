@@ -4,9 +4,6 @@
 #include "glad/glad.h"
 
 namespace WWR {
-	OpenGLRend::OpenGLRend() {
-
-	}
 	void OpenGLRend::Draw(WWR::TwoDSprite& pic, int xCoord, int yCoord, int zCoord, WWR::ShaderProgram shader) {
 		// Getting the size of the window from WinforGame Singleton
 		int winWidth{ WinForGame::GetWinForGame()->getWidth() };
