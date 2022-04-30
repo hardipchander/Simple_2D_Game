@@ -3,7 +3,6 @@
 #include "WindWheelRealApp.h"
 #include "WinForGame.h"
 //#include "GLFW/glfw3.h"   // for window screen 
-#include "glad/glad.h"    // for OpenGl and drawing 
 #include "TwoDSprite.h"
 #include "ShaderProgram.h"
 #include "SingleRenderer.h"
@@ -21,21 +20,33 @@ namespace WWR {
 		// Creating the Renderer Singleton
 		SingleRenderer::Init();
 
-		WWR::TwoDSprite sprite{"../WindWheelReal/Assets/SpritesOrImages/moon.png"};
+		WWR::TwoDSprite sprite{"../WindWheelReal/Assets/SpritesOrImages/heart.png"};
 
+		// Start sprite outside of the screen by making it negative 
+		int posX{-sprite.GetWidth() };
+
+		// When next frame should be displayed now time + frameDuration 
+		nextFrameTime = std::chrono::steady_clock::now()+frameDuration;
+
+		// In this loop I will get user input and update the frame 
 		while (true) {
-			// in this loop I will get user input and update the frame 
-			// OnUpdate on what happens on each run of the game or each loop of the gamse  
+			// OnUpdate on what happens on each run of the game or each loop of the game  
 			OnUpdate();
 
-			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			SingleRenderer::ClearWindow();
 
-			SingleRenderer::Draw(sprite, 50, 20, 1);
-			
-			// Swap Buffers and Poll events for Glfw Window
+			SingleRenderer::Draw(sprite, posX, 20, 1);
+			posX = posX + 5;
+
+			// Ask loop to sleep until next time 
+			std::this_thread::sleep_until(nextFrameTime);
+
+			// Swap Buffers(replace front buffer with back buffer where everything is written on back buffer) and Poll events for Glfw Window
 			WWR::WinForGame::GetWinForGame()->UpdateBuffers();
 			WWR::WinForGame::GetWinForGame()->TakeEvents();
+
+			// Update nextFrameTime but can be a problem because what if we don't finish all work before nextFrameTime
+			nextFrameTime += frameDuration;
 		}
 	}
 
