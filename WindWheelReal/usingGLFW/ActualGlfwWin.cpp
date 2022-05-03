@@ -23,6 +23,9 @@ namespace WWR {
 		// Before you can use OpenGL API you must have a current OpenGL Context
 		glfwMakeContextCurrent(ActualWindow);
 
+		// Funnction delays swap buffer so swapping occurs when buffer is ready 
+		glfwSwapInterval(1);
+
 		// Error checking for Glad and it is after glfwMakeContextCurrent statement 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 			WWR_LOG("Glad failed to intialize");
