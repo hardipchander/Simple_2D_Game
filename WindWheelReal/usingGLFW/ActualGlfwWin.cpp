@@ -23,13 +23,16 @@ namespace WWR {
 		// Before you can use OpenGL API you must have a current OpenGL Context
 		glfwMakeContextCurrent(ActualWindow);
 
-		// Funnction delays swap buffer so swapping occurs when buffer is ready 
+		// Function delays swap buffer so swapping occurs when buffer is ready 
 		glfwSwapInterval(1);
 
 		// Error checking for Glad and it is after glfwMakeContextCurrent statement 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 			WWR_LOG("Glad failed to intialize");
 		}
+
+		// Set user pointer of the window to my mCallBacks object
+		glfwSetWindowUserPointer(ActualWindow,&mCallBacks);
 
 		return true;
 	}
@@ -65,6 +68,21 @@ namespace WWR {
 		}
 
 		glfwTerminate();
+	}
+
+	// Handles Key Press Event
+	void ActualGlfwWin::SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack) {
+		glfwSetKeyCallback(ActualWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+		{
+			// Can change the logic here later now press button is the same as holding the button down
+			if (action == GLFW_PRESS || action == GLFW_REPEAT) {
+
+				// Cast user ptr to CallBacks* because it is originally a void pointer that can point to anything
+				CallBacks* userPtr{ (CallBacks*)glfwGetWindowUserPointer(window) };
+			}
+		}
+
+		);
 	}
 
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "WwrMacroDefinitions.h"
 #include "precompilehead.h"
+#include "InputEvents.h"
 
 // 60 fps 60 frames in a second 
 #define WWR_FRAMERATE 60
@@ -10,6 +11,8 @@ namespace WWR {
 	public:
 		void Run();
 		virtual void OnUpdate();
+
+		virtual void SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent &)> & keyPressedCallBack);
 
 	private:
 

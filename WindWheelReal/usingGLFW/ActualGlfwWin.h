@@ -17,7 +17,14 @@ namespace WWR {
 
 		~ActualGlfwWin();
 
+		virtual void SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack) override;
+
 	private:
+		// For handling events 
+		struct CallBacks {
+			std::function<void(const KeyPressedEvent&)> keyPressedCallBack;
+		} mCallBacks;
+
 		GLFWwindow* ActualWindow{nullptr};
 	};
 }

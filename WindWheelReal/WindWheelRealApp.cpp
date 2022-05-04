@@ -53,4 +53,8 @@ namespace WWR {
 	void WindWheelRealApp::OnUpdate() {
 
 	}
+
+	void WindWheelRealApp::SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack) {
+		WinForGame::GetWinForGame()->SetKeyPressedCallBack(keyPressedCallBack);
+	}
 }

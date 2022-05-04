@@ -36,6 +36,10 @@ namespace WWR {
 		return window->getHeight();
 	}
 
+	void WinForGame::SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack) {
+		window->SetKeyPressedCallBack(keyPressedCallBack);
+	}
+
 	WinForGame::WinForGame() {
 #ifdef WWR_WINDOWS  
 		window = new ActualGlfwWin;

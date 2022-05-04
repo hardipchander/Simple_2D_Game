@@ -1,5 +1,6 @@
 #pragma once
 #include "precompilehead.h"
+#include "InputEvents.h"
 
 namespace WWR {
 	class AbstractWindow {
@@ -9,6 +10,7 @@ namespace WWR {
 		virtual void TakeEvents() = 0;
 		virtual int getWidth() const = 0;
 		virtual int getHeight() const = 0;
+		virtual void SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack) = 0;
 
 	private:
 

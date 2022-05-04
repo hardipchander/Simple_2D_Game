@@ -1,7 +1,7 @@
 #pragma once
 #include "AbstractWindow.h"
 #include "WwrMacroDefinitions.h"
-
+#include "InputEvents.h"
 
 // Game Window for my game and it is a singleton (1 game = 1 game window) in the namespace WWR
 namespace WWR {
@@ -16,6 +16,7 @@ namespace WWR {
 
 		int getWidth() const;
 		int getHeight() const;
+		void SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack);
 
 	private:
 		inline static WinForGame* instant{nullptr};
