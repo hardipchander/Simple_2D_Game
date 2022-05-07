@@ -2,10 +2,11 @@
 
 #include "WindWheelRealApp.h"
 #include "WinForGame.h"
-//#include "GLFW/glfw3.h"   // for window screen 
 #include "TwoDSprite.h"
 #include "ShaderProgram.h"
 #include "SingleRenderer.h"
+#include "InputEvents.h"
+#include "CodesForKeys.h"
 
 namespace WWR {
 	void WindWheelRealApp::Run() {
@@ -21,22 +22,41 @@ namespace WWR {
 		SingleRenderer::Init();
 
 		WWR::TwoDSprite sprite{"../WindWheelReal/Assets/SpritesOrImages/heart.png"};
-
-		// Start sprite outside of the screen by making it negative 
-		int posX{-sprite.GetWidth() };
+		int x{0}, y{0};
 
 		// When next frame should be displayed now time + frameDuration 
 		nextFrameTime = std::chrono::steady_clock::now()+frameDuration;
 
+		auto keyEvent = [&x, &y](const WWR::KeyPressedEvent& event) {
+			if (event.GetKeyCode() == WWR_KEY_LEFT) {
+				x -= 5;
+			}
+			else if (event.GetKeyCode() == WWR_KEY_RIGHT) {
+				x += 5;
+			}
+			else if (event.GetKeyCode() == WWR_KEY_UP) {
+				y += 5;
+			}
+			else if (event.GetKeyCode() == WWR_KEY_DOWN) {
+				y -= 5;
+			}
+		};
+
+		auto keyReleased = [](const WWR::KeyReleasedEvent& Releasedevent) { 
+
+		};
+		SetKeyPressedCallBack(keyEvent);
+		SetKeyReleasedCallBack(keyReleased);
+		
 		// In this loop I will get user input and update the frame 
-		while (true) {
+		while (!WWR::WinForGame::GetWinForGame()->ShouldWindowClose()) {
 			// OnUpdate on what happens on each run of the game or each loop of the game  
 			OnUpdate();
 
+			// Sets the Color of the Screen 
 			SingleRenderer::ClearWindow();
-
-			SingleRenderer::Draw(sprite, posX, 20, 1);
-			posX = posX + 5;
+		
+			SingleRenderer::Draw(sprite, x, y, 1);
 
 			// Ask loop to sleep until next time 
 			std::this_thread::sleep_until(nextFrameTime);
@@ -54,7 +74,15 @@ namespace WWR {
 
 	}
 
-	void WindWheelRealApp::SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack) {
+	void WindWheelRealApp::SetKeyPressedCallBack(std::function<void(const KeyPressedEvent&)> keyPressedCallBack) {
+		// WWR App passes it to WinForGame (Game Window Singleton) 
 		WinForGame::GetWinForGame()->SetKeyPressedCallBack(keyPressedCallBack);
 	}
+
+	void WindWheelRealApp::SetKeyReleasedCallBack(std::function<void(const KeyReleasedEvent&)> keyReleasedCallBack) {
+		// WWR App passes it to WinForGame (Game Window Singleton) 
+		WinForGame::GetWinForGame()->SetKeyReleasedCallBack(keyReleasedCallBack);
+	}
+
+
 }

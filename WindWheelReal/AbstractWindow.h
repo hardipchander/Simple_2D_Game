@@ -10,7 +10,10 @@ namespace WWR {
 		virtual void TakeEvents() = 0;
 		virtual int getWidth() const = 0;
 		virtual int getHeight() const = 0;
-		virtual void SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack) = 0;
+		virtual void SetKeyPressedCallBack(std::function<void(const KeyPressedEvent&)> keyPressedCallBack) = 0;
+		virtual void SetKeyReleasedCallBack(std::function<void(const KeyReleasedEvent&)> keyReleasedCallBack) = 0;
+		virtual bool ShouldWindowClose() = 0;
+
 
 	private:
 

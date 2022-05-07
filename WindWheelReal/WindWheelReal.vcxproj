@@ -92,6 +92,7 @@
     <ClInclude Include="AbstractShader.h" />
     <ClInclude Include="AbstractSprite.h" />
     <ClInclude Include="AbstractWindow.h" />
+    <ClInclude Include="CodesForKeys.h" />
     <ClInclude Include="InputEvents.h" />
     <ClInclude Include="precompilehead.h" />
     <ClInclude Include="ShaderProgram.h" />

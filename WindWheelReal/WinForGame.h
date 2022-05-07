@@ -17,6 +17,10 @@ namespace WWR {
 		int getWidth() const;
 		int getHeight() const;
 		void SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack);
+		void SetKeyReleasedCallBack(const std::function<void(const KeyReleasedEvent&)>& keyReleasedCallBack);
+
+		// Handles the case if user presses x on screen window then the screen window should close 
+		bool ShouldWindowClose();
 
 	private:
 		inline static WinForGame* instant{nullptr};

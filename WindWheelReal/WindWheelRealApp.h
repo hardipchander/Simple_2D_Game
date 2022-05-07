@@ -12,7 +12,8 @@ namespace WWR {
 		void Run();
 		virtual void OnUpdate();
 
-		virtual void SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent &)> & keyPressedCallBack);
+		void SetKeyPressedCallBack(std::function<void(const KeyPressedEvent &)>  keyPressedCallBack);
+		void SetKeyReleasedCallBack(std::function<void(const KeyReleasedEvent&)>  keyReleasedCallBack);
 
 	private:
 

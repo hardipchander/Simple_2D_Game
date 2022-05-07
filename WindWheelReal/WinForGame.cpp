@@ -40,6 +40,14 @@ namespace WWR {
 		window->SetKeyPressedCallBack(keyPressedCallBack);
 	}
 
+	void WinForGame::SetKeyReleasedCallBack(const std::function<void(const KeyReleasedEvent&)>& keyReleasedCallBack) {
+		window->SetKeyReleasedCallBack(keyReleasedCallBack);
+	}
+
+	bool WinForGame::ShouldWindowClose() {
+		return window->ShouldWindowClose();
+	}
+
 	WinForGame::WinForGame() {
 #ifdef WWR_WINDOWS  
 		window = new ActualGlfwWin;

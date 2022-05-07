@@ -14,6 +14,8 @@ set(HEADER_FILES
 		     usingOpenGl/TwoDSpriteOpenGl.h
 		     usingOpenGl/OpenGlShaderProgram.h
 		     usingOpenGl/OpenGLRend.h
+		     InputEvents.h
+		     CodesForKeys.h
 	
 		     )
 
@@ -27,6 +29,7 @@ set(SOURCE_FILES
 		SingleRenderer.cpp
 		TwoDSprite.cpp
 		usingOpenGl/TwoDSpriteOpenGl.cpp
+		InputEvents.cpp
 		
         )
 

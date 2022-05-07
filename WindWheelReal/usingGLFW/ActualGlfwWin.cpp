@@ -31,8 +31,31 @@ namespace WWR {
 			WWR_LOG("Glad failed to intialize");
 		}
 
+		// Setting up the button(keyboard) input 
 		// Set user pointer of the window to my mCallBacks object
-		glfwSetWindowUserPointer(ActualWindow,&mCallBacks);
+		glfwSetWindowUserPointer(ActualWindow, &mCallBacks);
+
+		glfwSetKeyCallback(ActualWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+			{
+				// Can change the logic here later now press button is the same as holding the button down
+				if (action == GLFW_PRESS || action == GLFW_REPEAT) {
+
+					// Cast user ptr to CallBacks* because it is originally a void pointer that can point to anything
+					CallBacks* userPtr{ (CallBacks*)glfwGetWindowUserPointer(window) };
+
+					KeyPressedEvent event{ key };
+					userPtr->keyPressedCallBack(event);
+				}
+				else if (action == GLFW_RELEASE) {
+					// Cast user ptr to CallBacks* because it is originally a void pointer that can point to anything
+					CallBacks* userPtr{ (CallBacks*)glfwGetWindowUserPointer(window) };
+
+					KeyReleasedEvent event{key};
+					userPtr->keyReleasedCallBack(event);
+				}
+			}
+
+		);
 
 		return true;
 	}
@@ -71,18 +94,20 @@ namespace WWR {
 	}
 
 	// Handles Key Press Event
-	void ActualGlfwWin::SetKeyPressedCallBack(const std::function<void(const KeyPressedEvent&)>& keyPressedCallBack) {
-		glfwSetKeyCallback(ActualWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
-		{
-			// Can change the logic here later now press button is the same as holding the button down
-			if (action == GLFW_PRESS || action == GLFW_REPEAT) {
+	void ActualGlfwWin::SetKeyPressedCallBack(std::function<void(const KeyPressedEvent&)> keyPressedCallBack) {
+		mCallBacks.keyPressedCallBack=keyPressedCallBack;
 
-				// Cast user ptr to CallBacks* because it is originally a void pointer that can point to anything
-				CallBacks* userPtr{ (CallBacks*)glfwGetWindowUserPointer(window) };
-			}
-		}
+	}
+	
+	// Handles Key Release Event 
+	void ActualGlfwWin::SetKeyReleasedCallBack(std::function<void(const KeyReleasedEvent&)> keyReleasedCallBack) {
+		mCallBacks.keyReleasedCallBack = keyReleasedCallBack;
 
-		);
+	}
+
+	// Handles the case if user presses x on screen window then the screen window should close 
+	bool ActualGlfwWin::ShouldWindowClose() {
+		return glfwWindowShouldClose(ActualWindow);
 	}
 
 }
