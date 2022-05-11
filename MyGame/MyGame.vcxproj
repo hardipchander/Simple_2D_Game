@@ -85,11 +85,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="driver.cpp" />
+    <ClCompile Include="MyGameApp.cpp" />
+    <ClCompile Include="Things.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WindWheelReal\WindWheelReal.vcxproj">
       <Project>{51798576-877f-491b-b1b0-fb81af1ba821}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyGameApp.h" />
+    <ClInclude Include="Things.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

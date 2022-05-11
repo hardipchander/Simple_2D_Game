@@ -21,7 +21,7 @@ namespace WWR {
 		// Creating the Renderer Singleton
 		SingleRenderer::Init();
 
-		WWR::TwoDSprite sprite{"../WindWheelReal/Assets/SpritesOrImages/heart.png"};
+		WWR::TwoDSprite character{"../WindWheelReal/Assets/SpritesOrImages/heart.png"};
 		int x{0}, y{0};
 
 		// When next frame should be displayed now time + frameDuration 
@@ -56,7 +56,7 @@ namespace WWR {
 			// Sets the Color of the Screen 
 			SingleRenderer::ClearWindow();
 		
-			SingleRenderer::Draw(sprite, x, y, 1);
+			SingleRenderer::Draw(character, x, y, 1);
 
 			// Ask loop to sleep until next time 
 			std::this_thread::sleep_until(nextFrameTime);

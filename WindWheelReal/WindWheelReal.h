@@ -5,6 +5,7 @@
 #include "ShaderProgram.h"
 #include "SingleRenderer.h"
 #include "CodesForKeys.h"
+#include "InputEvents.h"
 
 #define WWR_BEGIN_APP(gameapp) \
 \

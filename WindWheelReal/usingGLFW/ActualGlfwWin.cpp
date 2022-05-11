@@ -26,7 +26,7 @@ namespace WWR {
 		// Function delays swap buffer so swapping occurs when buffer is ready 
 		glfwSwapInterval(1);
 
-		// Error checking for Glad and it is after glfwMakeContextCurrent statement 
+		// Error checking for Glad, it intializes it and it is after glfwMakeContextCurrent statement
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 			WWR_LOG("Glad failed to intialize");
 		}

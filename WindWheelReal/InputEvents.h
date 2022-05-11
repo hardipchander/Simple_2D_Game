@@ -1,7 +1,9 @@
 #pragma once
 
+#include "WwrMacroDefinitions.h"
+
 namespace WWR {
-	class KeyPressedEvent {
+	class WWR_API KeyPressedEvent {
 	public:
 		KeyPressedEvent(int codeOfKey);
 		KeyPressedEvent() = delete;
@@ -12,7 +14,7 @@ namespace WWR {
 		int keyCode;
 	};
 
-	class KeyReleasedEvent {
+	class WWR_API KeyReleasedEvent {
 	public:
 		KeyReleasedEvent(int codeOfKey);
 		KeyReleasedEvent() = delete;
