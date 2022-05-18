@@ -20,7 +20,7 @@ namespace WWR {
 
 	//Sets the color of the Screen Window
 	void OpenGLRend::ClearWindow() {
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.75f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
 }

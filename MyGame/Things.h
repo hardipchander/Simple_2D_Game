@@ -34,4 +34,3 @@ private:
 
 	std::vector<WWR::TwoDSprite> images;
 };
-

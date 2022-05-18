@@ -9,6 +9,9 @@
 namespace WWR {
 	class WWR_API WindWheelRealApp {
 	public:
+		// It creates the GameWindow singleton and Renderer Singleton 
+		WindWheelRealApp();
+
 		void Run();
 		virtual void OnUpdate();
 

@@ -9,55 +9,32 @@
 #include "CodesForKeys.h"
 
 namespace WWR {
-	void WindWheelRealApp::Run() {
+	WindWheelRealApp::WindWheelRealApp() {
 		// WWR_LOG is a macro used for debug printing it only works in the Debug Build
 		WWR_LOG("WindWheelReal is runnning");
 
 		// Create Window with singelton 
 		WWR::WinForGame::Init();
 		const std::string WindowName = "Screen For Game";
-		WWR::WinForGame::GetWinForGame()->CreateWindow(900, 900, WindowName);
+		WWR::WinForGame::GetWinForGame()->CreateWindow(1200, 1200, WindowName);
 
 		// Creating the Renderer Singleton
 		SingleRenderer::Init();
+	}
 
-		WWR::TwoDSprite character{"../WindWheelReal/Assets/SpritesOrImages/heart.png"};
-		int x{0}, y{0};
+	void WindWheelRealApp::Run() {
 
 		// When next frame should be displayed now time + frameDuration 
 		nextFrameTime = std::chrono::steady_clock::now()+frameDuration;
-
-		auto keyEvent = [&x, &y](const WWR::KeyPressedEvent& event) {
-			if (event.GetKeyCode() == WWR_KEY_LEFT) {
-				x -= 5;
-			}
-			else if (event.GetKeyCode() == WWR_KEY_RIGHT) {
-				x += 5;
-			}
-			else if (event.GetKeyCode() == WWR_KEY_UP) {
-				y += 5;
-			}
-			else if (event.GetKeyCode() == WWR_KEY_DOWN) {
-				y -= 5;
-			}
-		};
-
-		auto keyReleased = [](const WWR::KeyReleasedEvent& Releasedevent) { 
-
-		};
-		SetKeyPressedCallBack(keyEvent);
-		SetKeyReleasedCallBack(keyReleased);
 		
 		// In this loop I will get user input and update the frame 
 		while (!WWR::WinForGame::GetWinForGame()->ShouldWindowClose()) {
-			// OnUpdate on what happens on each run of the game or each loop of the game  
-			OnUpdate();
-
 			// Sets the Color of the Screen 
 			SingleRenderer::ClearWindow();
-		
-			SingleRenderer::Draw(character, x, y, 1);
 
+			// OnUpdate on what happens on each run of the game or each loop of the game  
+			OnUpdate();
+		
 			// Ask loop to sleep until next time 
 			std::this_thread::sleep_until(nextFrameTime);
 

@@ -6,19 +6,22 @@
 // We connect softwareframework(GameEngine) to Game Appilication,the Game Appilication itself is a GameEngineObject(WindWheelRealApp) (inheritance is-a relationship)
 class MyGameApp : public WWR::WindWheelRealApp {
 public:
+	// In constructor set up the key
+	MyGameApp();
+
 	virtual void OnUpdate() override;
-	bool CollideX(const Things & one, const Things& another);
-	bool CollideY(const Things& one, const Things& another);
+	bool Collide(const Things & one, const Things& another);
+
 
 private:
 	Things Hero{ {"Assets/images/jimmy.png","Assets/images/sheen.png"}};
-	std::vector<Things> Immovables;
+	std::vector<Things> enemies{ {{"Assets/images/enemy.png"}} };
 
-	enum class HeroStates {STANDING,RUNNING,JUMPING } heroState{HeroStates::STANDING};
-	enum class HeroDirections {LEFT,RIGHT} heroDirections{HeroDirections::RIGHT};
+	//Enemy orginally moving down 
+	int enemyVerticalSpeed{-5};
 
 	// Speed is mesured in pixels per frame 
 	int HorizontalSpeed{0};
-	int VerticalSpeed{0};
 
 };
+
