@@ -21,6 +21,11 @@ namespace WWR {
 		instance->implementation->ClearWindow();
 	}
 
+	// Sets the color of the Screen Window based on string color
+	void SingleRenderer::ClearWindowBasedOnColor(std::string color) {
+		instance->implementation->ClearWindowBasedOnColor(color);
+	}
+
 	SingleRenderer::SingleRenderer() : shader("../WindWheelReal/Assets/Shaders/defaultVertexShader.glsl", "../WindWheelReal/Assets/Shaders/defaultFragmentShader.glsl") {
 #if WWR_OPENGL
 		implementation = new OpenGLRend;

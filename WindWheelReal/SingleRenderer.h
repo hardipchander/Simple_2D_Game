@@ -11,6 +11,7 @@ namespace WWR {
 		static void Init();
 		static void Draw(WWR::TwoDSprite& pic, int xCoord, int yCoord, int zCoord);
 		static void ClearWindow();
+		static void ClearWindowBasedOnColor(std::string color);
 
 	private:
 		// Make Renderer (SingleRenderer a singleton)

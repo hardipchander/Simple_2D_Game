@@ -17,7 +17,7 @@ public:
 
 private:
 	Things Hero{ {"Assets/images/jimmy.png","Assets/images/sheen.png"}};
-	std::vector<Things> enemies{ {{"Assets/images/enemy.png"}} };
+	std::vector<Things> enemies{ {{"Assets/images/enemy.png"}}};
 	enum class ModeOFMovement{VERTICAL, HORIZONTAL} enemyMovement{ModeOFMovement::VERTICAL};
 
 	//Enemy orginally moving down or moving left
@@ -34,5 +34,7 @@ private:
 	// Boolean to see if game is over 
 	bool GameOver{false};
 
+	// Background Entity 
+	Things BackGround{ {"Assets/images/Background.png"}};
 };
 

@@ -20,7 +20,40 @@ namespace WWR {
 
 	//Sets the color of the Screen Window
 	void OpenGLRend::ClearWindow() {
-		glClearColor(0.0f, 0.0f, 0.75f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+	}
+
+	//Sets the color of the Screen Window based on String
+	void OpenGLRend::ClearWindowBasedOnColor(std::string color){
+		if (color == "Yellow") {
+			glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+		}
+		else if (color == "Green") {
+			glClearColor(0.0f, 0.55f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+		}
+		else if (color == "Blue") {
+			glClearColor(0.0f, 0.0f, 0.55f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+		}
+		else if (color == "Red") {
+			glClearColor(0.55f, 0.0f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+		}
+		else if (color == "Orange") {
+			glClearColor(1.0f, 0.64f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+		}
+		else if (color == "Black") {
+			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+		}
+		else if (color == "White") {
+			glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+		}
+		
 	}
 }

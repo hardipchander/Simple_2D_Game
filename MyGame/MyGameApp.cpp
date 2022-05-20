@@ -46,10 +46,17 @@ MyGameApp::MyGameApp() {
 	// Make sure that random numbers are generated not pseudorandom numbers
 	srand(time(0));
 
+	// Set Coordinates for the Backgorund Entity
+	BackGround.SetX(0);
+	BackGround.SetY(0);
+
 }
 
 // Called before drawing every frame 
 void MyGameApp::OnUpdate() {
+	// On every on update draw the background
+	BackGround.Draw();
+
 	// Check if the Game is Over, did the Hero collide with enemy, if not continue Game   
 	if (!GameOver) {
 		// Updating the new coordinates of hero and making sure Hero can go around all 4 borders of the game wall
@@ -114,7 +121,8 @@ void MyGameApp::OnUpdate() {
 		enemies[0].Draw();
 	}
 	else {
-		// Draw the Ending Entity 
+		// Draw the Ending Entity and the Background Entity 
+		BackGround.Draw();
 		Ending.Draw();
 	}
 	

@@ -15,8 +15,8 @@ namespace WWR {
 
 		// Create Window with singelton 
 		WWR::WinForGame::Init();
-		const std::string WindowName = "Screen For Game";
-		WWR::WinForGame::GetWinForGame()->CreateWindow(1000, 1000, WindowName);
+		const std::string WindowName = "The World";
+		WWR::WinForGame::GetWinForGame()->CreateWindow(1000, 980, WindowName);
 
 		// Creating the Renderer Singleton
 		SingleRenderer::Init();
