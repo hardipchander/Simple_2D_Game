@@ -4,7 +4,6 @@
 // In constructor of GameApp set up key
 MyGameApp::MyGameApp() {
 	SetKeyPressedCallBack([this](const WWR::KeyPressedEvent & e) {
-		// I can make it more than 2 directions, here it is 2 directions Uniqueness here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		switch (e.GetKeyCode()) 
 		{
 		case WWR_KEY_LEFT:
@@ -21,7 +20,21 @@ MyGameApp::MyGameApp() {
 
 		case WWR_KEY_UP:
 			VerticalSpeed = 5;
-			Hero.SetIndexOfCurrentImage(0);
+			// Logic for the animation for 5 images 
+			if (counterForUpMovement == 5) {
+				counterForUpMovement = 1;
+			}
+			Hero.SetIndexOfCurrentImage(counterForUpMovement);
+
+			// Slow so the animation can happen slowly 
+			if (delayForMovement <= 5) {
+				delayForMovement++;
+			}
+			else if (delayForMovement > 5) {
+				counterForUpMovement++;
+				delayForMovement = 1;
+			}
+
 			break;
 
 		case WWR_KEY_DOWN:
@@ -35,8 +48,10 @@ MyGameApp::MyGameApp() {
 
 	// If you not pressing anything then hero does not move 
 	SetKeyReleasedCallBack([this](const WWR::KeyReleasedEvent& e) {
+		Hero.SetIndexOfCurrentImage(0);
 		HorizontalSpeed=0;
 		VerticalSpeed=0;
+		
 	});
 
 	// Set up Enemy coordinates for the screen
@@ -46,7 +61,7 @@ MyGameApp::MyGameApp() {
 	// Make sure that random numbers are generated not pseudorandom numbers
 	srand(time(0));
 
-	// Set Coordinates for the Backgorund Entity
+	// Set Coordinates for the Background Entity for all Background Images
 	BackGround.SetX(0);
 	BackGround.SetY(0);
 
@@ -54,8 +69,21 @@ MyGameApp::MyGameApp() {
 
 // Called before drawing every frame 
 void MyGameApp::OnUpdate() {
-	// On every on update draw the background
-	BackGround.Draw();
+	// On every on update draw the background but need randomness to have many backgrounds
+	int numRandom = rand() % 200 + 1;
+	if (numRandom <= 1 && !GameOver) {
+		BackGround.SetIndexOfCurrentImage(0);
+		BackGround.Draw();
+	}
+	else if (numRandom <= 2 && !GameOver) {
+		BackGround.SetIndexOfCurrentImage(1);
+		BackGround.Draw();
+	}
+	else {
+		//The Background stays the same
+		BackGround.Draw();
+	}
+	
 
 	// Check if the Game is Over, did the Hero collide with enemy, if not continue Game   
 	if (!GameOver) {
@@ -72,11 +100,10 @@ void MyGameApp::OnUpdate() {
 
 		// Random Enemy Movement
 		// Play with numDetermineMovmentOfEnemy to more randomness 
-		int numDetermineMovementOfEnemy = rand() % 200 + 1;
-		if (numDetermineMovementOfEnemy <= 5) {
+		if (numRandom <= 5) {
 			enemyMovement = ModeOFMovement::VERTICAL;
 		}
-		else if (numDetermineMovementOfEnemy <= 10) {
+		else if (numRandom <= 10) {
 			enemyMovement = ModeOFMovement::HORIZONTAL;
 		}
 		else {

@@ -16,8 +16,14 @@ public:
 
 
 private:
-	Things Hero{ {"Assets/images/jimmy.png","Assets/images/sheen.png"}};
+	const std::vector<std::string> picturesForHero{ "Assets/images/SpiderStanding.png","Assets/images/SpiderUp1.png", "Assets/images/SpiderUp2.png", "Assets/images/SpiderUp3.png",
+		"Assets/images/SpiderUp4.png", "Assets/images/SpiderUp5.png" };
+	Things Hero{picturesForHero};
+	int counterForUpMovement = 1;
+	int delayForMovement = 1;
+
 	std::vector<Things> enemies{ {{"Assets/images/enemy.png"}}};
+
 	enum class ModeOFMovement{VERTICAL, HORIZONTAL} enemyMovement{ModeOFMovement::VERTICAL};
 
 	//Enemy orginally moving down or moving left
@@ -35,6 +41,6 @@ private:
 	bool GameOver{false};
 
 	// Background Entity 
-	Things BackGround{ {"Assets/images/Background.png"}};
+	Things BackGround{ {"Assets/images/Background.png","Assets/images/BackgroundTwo.png"}};
 };
 

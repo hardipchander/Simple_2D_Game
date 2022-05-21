@@ -33,4 +33,5 @@ private:
 	int indexOfCurrentImage{0};
 
 	std::vector<WWR::TwoDSprite> images;
+
 };
