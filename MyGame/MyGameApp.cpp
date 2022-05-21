@@ -143,15 +143,15 @@ bool MyGameApp::Collide(const Things& one, const Things& another) {
 	bool collideOnX{false};
 	bool collideOnY{false};
 
-	if ((oneLeft <= anotherLeft and anotherLeft <= oneRight) or (anotherLeft <= oneLeft and oneLeft <= anotherRight)) {
+	if ((oneLeft <= anotherLeft && anotherLeft <= oneRight) || (anotherLeft <= oneLeft && oneLeft <= anotherRight)) {
 		collideOnX = true;
 	}
 
-	if ((oneBottom <= anotherBottom and anotherBottom <= oneTop) or (anotherBottom <= oneBottom and oneBottom <= anotherTop)) {
+	if ((oneBottom <= anotherBottom && anotherBottom <= oneTop) || (anotherBottom <= oneBottom && oneBottom <= anotherTop)) {
 		collideOnY = true;
 	}
 
-	return collideOnX and collideOnY;
+	return collideOnX && collideOnY;
 }
 
 

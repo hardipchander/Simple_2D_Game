@@ -47,3 +47,8 @@ include_directories(../glad/include)
 target_precompile_headers(WindWheelReal PRIVATE precompilehead.h)
 
 target_link_libraries(WindWheelReal glfw glad stbi)
+
+file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/WindWheelReal)
+file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Debug)
+file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Release)
+
