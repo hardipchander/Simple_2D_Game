@@ -1,0 +1,23 @@
+My game is unique because my main character(Entity) can move up and down, left, right 
+My main character can go around the screen boundaries, like for example if it goes past the upper boundary of the screen it will respawn at the bottom of the screen. 
+If main character goes past the right boundary screen it will respawn at the left boundary of the screen
+If main character goes past the left boundary screen it will respawn at the right boundary of the screen
+If main character goes past the bottom boundary screen it will respawn at the upper boundary of the screen
+
+I added animations for my main character for moving down, moving up, and moving right. 
+If main character moves right he will swing right.
+if main character moves down he will climb down.
+If main character moves up he will jump up, even though the animation is not the best.
+For moving left the main character is only show one sprite. 
+
+My enemy Entity moves randomly vertically, or horizontally. I implemented random movment for my enemy that does not go past the boundaries of the screen. 
+
+
+I added an background and the background changes sprites, the background alternates between night and day, acting like time has passed
+The background is the size of the glfw screen. 
+
+The user can if he wants close the glfw screen with the X buttom on the top right, I did some research on that and implemented the function, using 
+bridge design pattern hiding the glfw function from the game user.
+
+If the game player dies the screen will not quit instead a logo will appear saying the main character is dead and the game player can X the screen.
+
