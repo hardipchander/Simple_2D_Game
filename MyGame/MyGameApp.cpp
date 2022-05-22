@@ -7,30 +7,42 @@ MyGameApp::MyGameApp() {
 		switch (e.GetKeyCode()) 
 		{
 		case WWR_KEY_LEFT:
-			// Setting up for moving left 
 			HorizontalSpeed = -5;
-			Hero.SetIndexOfCurrentImage(1);  // Change the parameter from number to variable !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			Hero.SetIndexOfCurrentImage(picturesForHero.size()-1);
 			break;
 
 		case WWR_KEY_RIGHT:
-			// Setting up for moving right
 			HorizontalSpeed = 5;
-			Hero.SetIndexOfCurrentImage(0); // Change the parameter from number to variable !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			// Logic for the animation for 7 images 
+			if (counterForRightMovement == ENDINDEXFORRIGHT+1) {
+				counterForRightMovement = STARTINDEXFORRIGHT;
+			}
+			Hero.SetIndexOfCurrentImage(counterForRightMovement);
+
+			// Slow so the animation can happen slowly 
+			if (delayForRightMovement <= 4) {
+				delayForRightMovement++;
+			}
+			else if (delayForRightMovement > 4) {
+				counterForRightMovement++;
+				delayForRightMovement = 1;
+			}
+
 			break;
 
 		case WWR_KEY_UP:
 			VerticalSpeed = 5;
 			// Logic for the animation for 5 images 
-			if (counterForUpMovement == 5) {
-				counterForUpMovement = 1;
+			if (counterForUpMovement == ENDINDEXFORUP+1) {
+				counterForUpMovement = STARTINDEXFORUP;
 			}
 			Hero.SetIndexOfCurrentImage(counterForUpMovement);
 
 			// Slow so the animation can happen slowly 
-			if (delayForMovement <= 5) {
+			if (delayForMovement <= 4) {
 				delayForMovement++;
 			}
-			else if (delayForMovement > 5) {
+			else if (delayForMovement > 4) {
 				counterForUpMovement++;
 				delayForMovement = 1;
 			}
@@ -39,7 +51,21 @@ MyGameApp::MyGameApp() {
 
 		case WWR_KEY_DOWN:
 			VerticalSpeed = -5;
-			Hero.SetIndexOfCurrentImage(1);
+			// Logic for the animation for 10 images 
+			if (counterForDownMovement == ENDINDEXFORDOWN + 1) {
+				counterForDownMovement = STARTINDEXFORDOWN;
+			}
+
+			Hero.SetIndexOfCurrentImage(counterForDownMovement);
+
+			// Slow so the animation can happen slowly 
+			if (delayForDownMovement <= 5) {
+				delayForDownMovement++;
+			}
+			else if (delayForDownMovement > 5) {
+				counterForDownMovement++;
+				delayForDownMovement = 1;
+			}
 			break;
 
 		}
@@ -62,7 +88,7 @@ MyGameApp::MyGameApp() {
 	srand(time(0));
 
 	// Set Coordinates for the Background Entity for all Background Images
-	BackGround.SetX(0);
+	BackGround.SetX(0); // (0,0) is the left most corner
 	BackGround.SetY(0);
 
 }
@@ -148,7 +174,7 @@ void MyGameApp::OnUpdate() {
 		enemies[0].Draw();
 	}
 	else {
-		// Draw the Ending Entity and the Background Entity 
+		// Draw the Ending Entity and the Background Entity because the Game is over at this point 
 		BackGround.Draw();
 		Ending.Draw();
 	}
