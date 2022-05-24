@@ -80,9 +80,9 @@ MyGameApp::MyGameApp() {
 		
 	});
 
-	// Set up Enemy coordinates for the screen
-	enemies[0].SetX(400);
-	enemies[0].SetY(400);
+	// Set up Enemy coordinates for the screen for the center of the screen 
+	enemies[0].SetX((WWR::WinForGame::GetWinForGame()->getWidth() / 2) - (enemies[0].GetWidth() / 2));
+	enemies[0].SetY((WWR::WinForGame::GetWinForGame()->getHeight() / 2) - (enemies[0].GetHeight() / 2));
 
 	// Make sure that random numbers are generated not pseudorandom numbers
 	srand(time(0));
