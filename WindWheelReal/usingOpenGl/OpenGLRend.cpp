@@ -35,7 +35,7 @@ namespace WWR {
 			glClear(GL_COLOR_BUFFER_BIT);
 		}
 		else if (color == "Blue") {
-			glClearColor(0.0f, 0.0f, 0.55f, 1.0f);
+			glClearColor(0.0f, 0.0f, 0.75f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 		}
 		else if (color == "Red") {

@@ -14,8 +14,13 @@ public:
 	virtual void OnUpdate() override;
 	bool Collide(const Things & one, const Things& another);
 
+	// Resets the game if the user decides to play the game again after he or she died 
+	// Sets up the coordinates of the Things like Hero and enemy 
+	void Reset();
+
 
 private:
+	// All the images needed for the main character Entity 
 	const std::vector<std::string> picturesForHero{ "Assets/images/SpiderStanding.png","Assets/images/SpiderUp1.png", "Assets/images/SpiderUp2.png", "Assets/images/SpiderUp3.png",
 		"Assets/images/SpiderUp4.png", "Assets/images/SpiderUp5.png", "Assets/images/SpiderRight1.png","Assets/images/SpiderRight2.png",
 		"Assets/images/SpiderRight3.png", "Assets/images/SpiderRight4.png","Assets/images/SpiderRight5.png","Assets/images/SpiderRight6.png", "Assets/images/SpiderRight7.png",
@@ -24,7 +29,7 @@ private:
 		"Assets/images/SpiderLeft.png"};
 	Things Hero{picturesForHero};
 
-	// Store important indices of the Hero Entity for animations 
+	// Store important indices of the Hero Entity for movement animations 
 	const int STARTINDEXFORUP = 1;
 	const int ENDINDEXFORUP = 5;
 
@@ -52,17 +57,35 @@ private:
 	int enemyVerticalSpeed{-5};
 	int enemyHorizontalSpeed{-5};
 
-	// Speed is mesured in pixels per frame 
+	// Speed is measured in pixels per frame 
 	int HorizontalSpeed{0};
 	int VerticalSpeed{0};
 
-	// Ending Entity 
+	// Begin Screen Entity
+	Things Begin{ {"Assets/images/Begin.png"} };
+
+	// Ending Screen  Entity 
 	Things Ending{ {"Assets/images/Ending.png"} };
+
+	// Boolean to see if the game is at the starting screen
+	bool GameStart{true};
 
 	// Boolean to see if game is over 
 	bool GameOver{false};
 
 	// Background Entity 
 	Things BackGround{ {"Assets/images/Background.png","Assets/images/BackgroundTwo.png"}};
+
+	// Spider Logo Entity (It is used for rotations)
+	std::vector<Things> SpiderLogos{ {{"Assets/images/LogoUp.png","Assets/images/LogoDown.png", "Assets/images/LogoLeft.png", "Assets/images/LogoRight.png"}}, 
+	{{"Assets/images/LogoUp.png","Assets/images/LogoDown.png", "Assets/images/LogoLeft.png", "Assets/images/LogoRight.png"}},
+	{{"Assets/images/LogoUp.png","Assets/images/LogoDown.png", "Assets/images/LogoLeft.png", "Assets/images/LogoRight.png"}},
+	{{"Assets/images/LogoUp.png","Assets/images/LogoDown.png", "Assets/images/LogoLeft.png", "Assets/images/LogoRight.png"}} };
+
+	// Used to slower the Spider Logo rotation 
+	short delayForLogo = 1;
+	
+	// String that stores the name of the previous background color of the starting screen
+	std::string previousColor;
 };
 

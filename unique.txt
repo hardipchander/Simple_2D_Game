@@ -1,3 +1,7 @@
+I added a starting screen where the game player has to press the space key to begin playing the game. I added four spider logos that rotate at the 4 corners of the screen. 
+The rotation of the spider logos is supposed to symbolize a loading screen or a waiting screen.   
+The starting screen alternates between the colors red and blue slowly not fast, even though the first color of the starting screen is black. 
+
 My game is unique because my main character(Entity) can move up and down, left, right 
 My main character can go around the screen boundaries, like for example if it goes past the upper boundary of the screen it will respawn at the bottom of the screen. 
 If main character goes past the right boundary screen it will respawn at the left boundary of the screen
@@ -12,12 +16,15 @@ For moving left the main character is only show one sprite.
 
 My enemy Entity moves randomly vertically, or horizontally. I implemented random movment for my enemy that does not go past the boundaries of the screen. 
 
+I added an background and the background changes, the background alternates between night and day, acting like time has passed. 
 
-I added an background and the background changes sprites, the background alternates between night and day, acting like time has passed
-The background is the size of the glfw screen. 
+I added an ending screen that the player sees if he or she dies. 
+If the game player dies the screen will not close instead a logo will appear saying the main character is dead and the game player can replay the game. 
+The player can replay the game by pressing the space key and the game will restart. Or the player can quit the game by pressing the X buttom on the top right of glfw window.
 
 The user can if he wants close the glfw screen with the X buttom on the top right, I did some research on that and implemented the function, using 
 bridge design pattern hiding the glfw function from the game user.
 
-If the game player dies the screen will not quit instead a logo will appear saying the main character is dead and the game player can X the screen.
+While the player decides on whether he or she wants to play the game again four spider logos, will rotate at the 4 corners of the screen. 
+The rotation of the spider logos is supposed to symbolize a loading screen or a waiting screen.  
 
